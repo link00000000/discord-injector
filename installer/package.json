@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "asar": "^0.13.0",
     "electron": "^1.6.10"
   }
 }

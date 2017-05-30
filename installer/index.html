@@ -79,6 +79,9 @@
         <script>
             $('#submit').click(function(e) {
                 e.preventDefault();
+                if(!$('#submit').hasClass('disabled')) {
+                    install($('form').serializeArray()[0].value);
+                }
             });
         </script>
         <script>
@@ -98,5 +101,6 @@
                 }
             }
         </script>
+        <script src="install.js"></script>
     </body>
 </html>
