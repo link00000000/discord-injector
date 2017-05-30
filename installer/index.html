@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="ionicons/css/ionicons.min.css">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="titlebar">
+            <div class="buttons">
+                <div id="draggable"></div>
+                <i class="icon ion-minus" onclick="javascript:minimize()"></i>
+                <i class="icon ion-close" onclick="javascript:window.close();"></i>
+            </div>
+        </div>
+        <div class="container" id="logo">
+            <div class="row">
+                <img src="images/discord_injector_logo.png" alt="Discord Injector">
+            </div>
+        </div>
+        <div class="container" id="selector">
+            <form action="">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="file" name="installDir" id="installDir" class="inputfile" webkitdirectory directory multiple style="display: none" />
+                        <label for="installDir" id="selectBtn"><span class="button">Select</span><input type="text" name="dirText" value=""></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-3" id="help"></div>
+                </div>
+                <div class="row"><input type="submit" id="submit" value="Install" class="col-2 offset-5"></div>
+            </form>
+        </div>
+
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+        <script src="jquery/js/jquery.min.js"></script>
+        <script src="tether/js/tether.min.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script>if (window.module) module = window.module;</script>
+        <script>
+            $('#draggable').css('width', 'calc(100% - ' + $('.buttons').width() + 'px - 10px)');
+        </script>
+        <script>
+            function minimize() {
+                const { remote } = require('electron');
+                remote.BrowserWindow.getFocusedWindow().minimize();
+            }
+        </script>
+        <script>
+            $(function() {
+                $('#selectBtn .button, #submit:not(.disabled)').on('mousedown', function() {
+                    $(this).addClass('click');
+                });
+                $(document).on('mouseup', function() {
+                    $('#selectBtn .button, #submit:not(.disabled)').removeClass('click');
+                });
+            });
+        </script>
+        <script>
+            try {
+                var defaultPath = require('child_process').execSync('echo %localappdata%').toString() + '\\Discord';
+                $('#selectBtn input').val(defaultPath);
+            } catch(e) {}
+            $('#help').text(require('./helpText.json').message);
+        </script>
+        <script>
+            $(function() {
+                $('#installDir:file').change(function() {
+                    var path = document.getElementById('installDir').files[0].path;
+                    $('#selectBtn input').val(path);
+                    updateSubmitState();
+                });
+            });
+        </script>
+        <script>
+            $('#submit').click(function(e) {
+                e.preventDefault();
+            });
+        </script>
+        <script>
+            $(function() {
+                $('#selectBtn input').on('input', function() {
+                    updateSubmitState();
+                });
+            });
+        </script>
+        <script>
+            function updateSubmitState() {
+                var value = $('#selectBtn input').val();
+                if(value == "") {
+                    $('#submit').addClass('disabled');
+                } else {
+                    $('#submit').removeClass('disabled');
+                }
+            }
+        </script>
+    </body>
+</html>
