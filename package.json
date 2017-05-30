@@ -1,0 +1,36 @@
+{
+  "name": "discord-injector",
+  "version": "1.0.0",
+  "description": "A program to inject your own scripts and css into discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/link00000000/discord-injector.git"
+  },
+  "keywords": [
+    "discord",
+    "inject",
+    "injector",
+    "script",
+    "scripts",
+    "javascript",
+    "css"
+  ],
+  "author": "Logan Crandall (link00000000)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/link00000000/discord-injector/issues"
+  },
+  "homepage": "https://github.com/link00000000/discord-injector#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-asar": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-asar": "^1.0.0"
+  }
+}
