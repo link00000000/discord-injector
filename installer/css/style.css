@@ -116,3 +116,60 @@ i {
     cursor: not-allowed;
 }
 
+#invalidDirText {
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    color: #ad1a1a;
+    font-weight: bold;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 100ms opacity;
+}
+
+#invalidDirText.show {
+    opacity: 1;
+}
+
+.page:not(#pageOne) {
+    display: none;
+}
+
+#installText {
+    color: white;
+    font-size: 28px;
+    display: inline-block;
+    position: relative;
+    width: 100vw;
+    top: 35vh;
+    text-align: center;
+}
+
+#pageThree button {
+    font-weight: bold;
+    background-color: white;
+    padding: 5px;
+    border-radius: 3px 0 0 3px;
+    border: none;
+    border-bottom: 3px solid lightgray;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+button:focus {
+    outline: none;
+}
+
+#pageThree div div:first-child {
+    color: white;
+    font-size: 28px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+#pageThree div div:nth-child(2) button {
+    margin-top: 120px;
+}

@@ -16,24 +16,42 @@
                 <i class="icon ion-close" onclick="javascript:window.close();"></i>
             </div>
         </div>
-        <div class="container" id="logo">
-            <div class="row">
-                <img src="images/discord_injector_logo.png" alt="Discord Injector">
+        
+        <div id="pageOne" class="page">
+            <div class="container" id="logo">
+                <div class="row">
+                    <img src="images/discord_injector_logo.png" alt="Discord Injector">
+                </div>
+            </div>
+            <div class="container" id="selector">
+                <form action="">
+                    <div class="row">
+                        <div class="col-12" style="position: relative;">
+                            <input type="file" name="installDir" id="installDir" class="inputfile" webkitdirectory directory multiple style="display: none" />
+                            <label for="installDir" id="selectBtn"><span class="button">Select</span><input type="text" name="dirText" value=""></label>
+                            <p id="invalidDirText">Not a valid Discord install directory</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3" id="help"></div>
+                    </div>
+                    <div class="row"><input type="submit" id="submit" value="Install" class="col-2 offset-5"></div>
+                </form>
             </div>
         </div>
-        <div class="container" id="selector">
-            <form action="">
-                <div class="row">
-                    <div class="col-12">
-                        <input type="file" name="installDir" id="installDir" class="inputfile" webkitdirectory directory multiple style="display: none" />
-                        <label for="installDir" id="selectBtn"><span class="button">Select</span><input type="text" name="dirText" value=""></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 offset-3" id="help"></div>
-                </div>
-                <div class="row"><input type="submit" id="submit" value="Install" class="col-2 offset-5"></div>
-            </form>
+
+        <div id="pageTwo" class="page">
+            <div>
+                <div id="installText">Installing</div>
+            </div>
+        </div>
+
+        <div id="pageThree" class="page">
+            <div class="container">
+                <div class="row"><div class="col-12">Installation Complete</div></div>
+                <div class="row"><button class="col-6 offset-3">Launch Discord</button></div>
+                <div class="row"><button class="col-6 offset-3" onclick="javascript:window.close()">Exit</button></div>
+            </div>
         </div>
 
         <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
@@ -74,6 +92,38 @@
                     $('#selectBtn input').val(path);
                     updateSubmitState();
                 });
+            });
+        </script>
+        <script>
+            function changePage(pageSelector) {
+                $('.page').each(function() {
+                    if($(this).css('display') == 'block') {
+                        $(this).stop().fadeOut('fast', function() {
+                            $(pageSelector).stop().fadeIn('fast');
+                        });
+                    }
+                });
+            }
+            function changeInstallText(text) {
+                $('#installText').text(text);
+            }
+        </script>
+        <script>
+            $(function() {
+                setInterval(function() {
+                    var text = $('#installText').text();
+                    var length;
+                    if(text.match(/\./g) == null) {
+                        length = 0;
+                    } else {
+                        length = text.match(/\./g).length;
+                    }
+                    if(length == 3) {
+                        $('#installText').text(text.replace(/\./g, "") + '.');
+                    } else {
+                        $('#installText').text(text += '.');
+                    }
+                }, 500);
             });
         </script>
         <script>
