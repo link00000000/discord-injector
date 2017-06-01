@@ -1,16 +1,28 @@
 {
   "name": "discord-injector-installer",
+  "productName": "Discord Injector",
   "version": "1.0.0",
-  "description": "An installer for discord-injector",
+  "description": "A program that allows javascript and css to be injected into Discord",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron main.js"
   },
-  "author": "",
+  "author": "Logan Crandall (link00000000)",
   "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.6.10"
+  },
   "dependencies": {
-    "electron": "^1.6.10",
+    "ncp": "^2.0.0",
     "rimraf": "^2.6.1"
+  },
+  "build": {
+    "appId": "com.accidentallycoded",
+    "win": {
+      "icon": "icon.ico",
+      "target": ["portable"]
+    },
+    "asar": false
   }
 }
