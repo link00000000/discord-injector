@@ -1,1 +1,0 @@
-enclose -o ./packer.exe ./index.js

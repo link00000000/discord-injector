@@ -1,1 +1,0 @@
-console.log('This text was injected with a plugin');

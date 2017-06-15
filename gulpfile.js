@@ -16,7 +16,7 @@ gulp.task('closeDiscord', function() {
 });
 
 gulp.task('launchDiscord', function() {
-    execAsync('start /b ../Discord.exe > NUL');
+    execAsync('start /b ../Discord.exe 2> NUL');
 });
 
 gulp.task('watch', function() {

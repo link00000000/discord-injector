@@ -1,1 +1,0 @@
-enclose -o ./unpack.exe ./index.js
